@@ -1,0 +1,8 @@
+name: AFK
+main: com.mayspeed.afk.AFK
+version: 1.3
+author: May_Speed
+depend: [HolographicDisplays,Vault]
+softdepend: [Residence]
+commands: 
+  gj:
