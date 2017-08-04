@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/Minecraft相关 常用/Spigot[1.10.2-R1] - Test/spigot-1.10.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/Minecraft相关 常用/PaperSpigot[1.8.8-R1] - Test/plugins/HolographicDisplays.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/Minecraft相关 常用/Spigot[1.10.2-R1] - Test/plugins/Vault-1.5.6.jar"/>
-	<classpathentry kind="lib" path="I:/梦江湖/plugins/[领地]Residence_4.5.12.0.jar"/>
+	<classpathentry kind="lib" path="I:/梦江湖/plugins/[领地]Residence_4.7.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/Minecraft相关 常用/Spigot[1.12-R1] - Test/spigot-1.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
