@@ -1,6 +1,7 @@
 package me.may.afk;
 
 import com.bekvon.bukkit.residence.Residence;
+import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import me.may.afk.command.AFKCommand;
 import me.may.afk.listener.PlayerCommandPreprocessListener;
 import me.may.afk.listener.PlayerDeathListener;
@@ -33,6 +34,11 @@ public class Entry extends JavaPlugin {
         rewardTask.cancel();
         teleportTask.cancel();
         item = null;
+
+        // 1.5 Fix: 防止在 /reload 时, 玩家还在AFK时, 全息还在的问题
+        AFKCommand.afkPlayer.clear();
+        AFKCommand.map.values().forEach(Hologram::delete);
+        AFKCommand.map.clear();
     }
 
     public static Entry getInstance() {
