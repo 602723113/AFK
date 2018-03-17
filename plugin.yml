@@ -1,0 +1,8 @@
+name: AFK
+main: me.may.afk.Entry
+version: 1.4
+author: May_Speed
+depend: [HolographicDisplays,Vault]
+softdepend: [Residence]
+commands: 
+  gj:
