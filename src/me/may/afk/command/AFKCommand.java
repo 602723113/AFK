@@ -1,6 +1,5 @@
 package me.may.afk.command;
 
-import com.bekvon.bukkit.residence.Residence;
 import com.bekvon.bukkit.residence.protection.ResidenceManager;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
@@ -40,9 +39,16 @@ public class AFKCommand implements CommandExecutor {
 
             Player player = (Player) sender;
             if (args[0].equalsIgnoreCase("reload")) {
+                if (!player.hasPermission("gj.reload")) {
+                    player.sendMessage("§c权限不足!");
+                    return true;
+                }
                 player.sendMessage("§8[§6挂机§8] §e> §a插件已重载");
                 Entry.getInstance().reloadConfig();
+                // 1.5 Fix: 修复reload时物品尚未重置的问题, 和任务尚未重置的问题
                 Entry.getInstance().resetHoloItem();
+                Entry.getInstance().resetTasks();
+
                 return true;
             }
 
@@ -69,7 +75,7 @@ public class AFKCommand implements CommandExecutor {
                         return true;
                     }
 
-                    ResidenceManager residenceManager = Residence.getInstance().getResidenceManager();
+                    ResidenceManager residenceManager = Entry.getInstance().getResidenceInstance().getResidenceManager();
                     String residenceName = Entry.getInstance().getConfig().getString("Residence.Name");
                     if (!residenceManager.getByLoc(loc).getName().equals(residenceName)) {
                         player.sendMessage(Entry.getInstance().getConfig().getString("Residence.NoInRightResidence")

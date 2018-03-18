@@ -61,6 +61,17 @@ public class Entry extends JavaPlugin {
         item = null;
     }
 
+    public void resetTasks() {
+        rewardTask.cancel();
+        teleportTask.cancel();
+
+        CheckRunnable checkRunnable = new CheckRunnable();
+        TeleportRunnable teleportRunnable = new TeleportRunnable();
+
+        rewardTask = Bukkit.getScheduler().runTaskTimer(this, checkRunnable, 30L, Entry.getInstance().getConfig().getLong("Task.RewardPeriod") * 20);
+        teleportTask = Bukkit.getScheduler().runTaskTimer(this, teleportRunnable, 30L, Entry.getInstance().getConfig().getLong("Task.TeleportPeriod") * 20);
+    }
+
     private void register() {
         // 命令
         Bukkit.getPluginCommand("gj").setExecutor(new AFKCommand());
