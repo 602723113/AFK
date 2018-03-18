@@ -26,18 +26,19 @@ Residence:
 #挂机相关选项
 Task:
   #周期(period):修改这个就能够更改每多少秒进行一次经验的给予或者是金币的给予同时也是多少秒进行一次复位 单位: 秒
-  RewardPeriod: 20
+  RewardPeriod: 10
   # 1.5 Feature: 现在将奖励与tp同步进行分离, 单位: 秒
   TeleportPeriod: 1
   # 1.5 Feature: 允许使用在挂机的时候后台执行相关命令
   Commands:
     - "eco give %player% 0.05"
+    - "/exp give %player% 1"
 
 #全息设置
 #Material:设置悬浮物品的id
 #Data:设置悬浮物品的特殊值如 35:6 后面的6就是特殊值
 #Line:设置悬浮字
 Item:
-  Material: 1
+  Material: 399
   Data: 0
   Line: "&c&l[挂机中]"

@@ -1,8 +1,13 @@
 name: AFK
 main: me.may.afk.Entry
-version: 1.4
-author: May_Speed
-depend: [HolographicDisplays,Vault]
+version: 1.5
+author: Zoyn
+depend: [HolographicDisplays]
 softdepend: [Residence]
 commands: 
   gj:
+permission:
+  gj.reload:
+    default: op
+  gj.on:
+    default: true
