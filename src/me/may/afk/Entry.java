@@ -1,8 +1,10 @@
 package me.may.afk;
 
-import com.bekvon.bukkit.residence.Residence;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import me.may.afk.command.AFKCommand;
+import me.may.afk.hook.Residence;
+import me.may.afk.hook.residence.NewResidence;
+import me.may.afk.hook.residence.OldResidence;
 import me.may.afk.listener.PlayerCommandPreprocessListener;
 import me.may.afk.listener.PlayerDeathListener;
 import me.may.afk.listener.PlayerInteractListener;
@@ -86,10 +88,14 @@ public class Entry extends JavaPlugin {
         teleportTask = Bukkit.getScheduler().runTaskTimer(this, teleportRunnable, 30L, Entry.getInstance().getConfig().getLong("Task.TeleportPeriod") * 20);
     }
 
+    /**
+     * 反射挂钩Residence
+     */
     private void hookResidence() {
-        Residence resPlugin = (Residence) getServer().getPluginManager().getPlugin("Residence");
-        if (resPlugin != null) {
-            residenceInstance = resPlugin;
+        String residenceVersion = Bukkit.getPluginManager().getPlugin("Residence").getDescription().getVersion();
+        residenceInstance = new OldResidence();
+        if (residenceVersion.startsWith("4")) {
+            residenceInstance = new NewResidence();
         }
     }
 }
