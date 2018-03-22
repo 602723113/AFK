@@ -90,12 +90,15 @@ public class Entry extends JavaPlugin {
 
     /**
      * 反射挂钩Residence
+     * 1.5.1 Fix: 当服务器未安装Residence时所出现的NPE
      */
     private void hookResidence() {
-        String residenceVersion = Bukkit.getPluginManager().getPlugin("Residence").getDescription().getVersion();
-        residenceInstance = new OldResidence();
-        if (residenceVersion.startsWith("4")) {
-            residenceInstance = new NewResidence();
+        if (Bukkit.getPluginManager().getPlugin("Residence") != null) {
+            String residenceVersion = Bukkit.getPluginManager().getPlugin("Residence").getDescription().getVersion();
+            residenceInstance = new OldResidence();
+            if (residenceVersion.startsWith("4")) {
+                residenceInstance = new NewResidence();
+            }
         }
     }
 }
